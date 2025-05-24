@@ -1,0 +1,40 @@
+$black-ink: #000;
+$red-ink: #ff0000;
+$blue-border: #0077ff;
+$light-blue-bg: #e0f0ff;
+$diabled-bg: #f5f5f5;
+.text-body {
+  padding: 0.2rem;
+  fieldset {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid $black-ink;
+    border-radius: 4px;
+    padding: 0rem 0.4rem 0.2rem 0.4rem;
+    display: flex;
+    flex-direction: row;
+    column-gap: 0.4rem;
+    legend {
+      span {
+        color: $red-ink;
+      }
+    }
+    input {
+      width: 100%;
+      box-sizing: border-box;
+      height: auto;
+      border: none;
+      outline: none;
+    }
+    i {
+      padding: 0.2rem 0.4rem;
+    }
+    :active{
+     border: 1px solid $blue-border;
+    }
+    :disabled{
+     background-color: $diabled-bg;
+     cursor: not-allowed;
+    }
+  }
+}

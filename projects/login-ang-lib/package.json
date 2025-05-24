@@ -1,6 +1,10 @@
 {
-  "name": "login-ang-lib",
+  "name": "@cs7player/login-ang-lib",
   "version": "0.0.1",
+  "scripts": {
+    "copy-lib-assets": "node copy-lib-assets.js",
+    "build:lib": "ng build login-ang-lib && npm run copy-lib-assets"
+  },
   "peerDependencies": {
     "@angular/common": "^19.2.0",
     "@angular/core": "^19.2.0"

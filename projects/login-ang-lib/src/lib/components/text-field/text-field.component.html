@@ -1,1 +1,23 @@
-<p>text-field works!</p>
+@if(textFieldModel){
+<div class="text-body">
+  <fieldset [class.disabled]="textFieldModel!['isDisabled']">
+    @if(textFieldModel!["label"].length > 0){
+    <legend>
+      {{ textFieldModel!["label"] }}
+      @if(textFieldModel!["isRequired"]){
+      <span>*</span>
+      }
+    </legend>
+    }
+    <input
+     [type]="textFieldModel!['inputType']"
+     [placeholder]="textFieldModel!['placeHolder']"
+     [disabled]="textFieldModel!['isDisabled']"
+     [(ngModel)]="textFieldModel!['value']"
+     (keyup)="onEnter()">
+    @if(textFieldModel!["isIcon"]){
+     <i [class]="textFieldModel!['iconClass']" (onClick)="onIconClick()"></i>
+    }
+  </fieldset>
+</div>
+}
