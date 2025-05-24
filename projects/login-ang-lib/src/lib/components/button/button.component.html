@@ -1,1 +1,14 @@
-<p>button works!</p>
+@if(buttonModel){
+<div class="button-component" [title]="buttonModel!['title']">
+  <button
+    [ngClass]="[buttonModel!['buttonTheme'], buttonModel!['customButton']]"
+    [disabled]="buttonModel!['isDisabled']"
+    (click)="onClick()" >
+    {{ buttonModel!["text"] }}
+    @if(buttonModel!['iconClass'].length > 0){
+    <i [class]="buttonModel!['iconClass']"></i>
+    }
+  </button>
+</div>
+<audio id="clickSound" [src]="buttonModel?.audioSrc" preload="auto"></audio>
+}

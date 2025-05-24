@@ -30,19 +30,20 @@ export class TextFieldComponent {
   isValid() {
     const pattern = this.textFieldModel?.['inputContent'];
     const value = this.textFieldModel?.['value'];
+    const key = Object.entries(InputContent).find(([_, v]) => v === pattern)?.[0];
     if (pattern && value) {
       const regex = new RegExp(pattern);
       if (regex.test(value)) {
         this.titleText = '';
       } else {
-        this.titleText = 'Invalid Input!!!';
+        this.titleText = `Invalid ${key} Input!!!`;
       }
     }
   }
 
   soundEffect() {
     const audio = document.getElementById('clickSound') as HTMLAudioElement;
-    if (audio) {
+    if (audio && this.textFieldModel!["isAudio"]) {
       audio.currentTime = 0;
       audio.play();
     }

@@ -1,0 +1,29 @@
+$white-ink: #e0f0ff;
+$black-ink: #000;
+$red-bg: #ff0000;
+$blue-bg: #0077ff;
+$green-bg: #2ecc71;
+.button-component {
+  padding: 0.2rem;
+  button {
+    color: $white-ink;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.4rem;
+    display: flex;
+    flex-direction: row;
+    column-gap: 0.4rem;
+    cursor: pointer;
+    &.primary {
+      background-color: $blue-bg;
+    }
+    &.success {
+      background-color: $green-bg;
+    }
+    &.delete {
+      background-color: $red-bg;
+    }
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+}
