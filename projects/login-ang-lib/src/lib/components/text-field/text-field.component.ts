@@ -6,20 +6,45 @@ import { CommonModule } from '@angular/common';
   selector: 'lib-text-field',
   imports: [FormsModule, CommonModule],
   templateUrl: './text-field.component.html',
-  styleUrl: './text-field.component.css',
+  styleUrl: './text-field.component.scss',
 })
 export class TextFieldComponent {
   @Input('textFieldModel') textFieldModel: TextField | null = null;
   @Output() eventEmitter = new EventEmitter();
   @Output() iconEventEmitter = new EventEmitter();
+  titleText: string = '';
   onEnter() {
-    if (this.textFieldModel!['isDisabled']) {
+    if (!this.textFieldModel!['isDisabled']) {
+      this.soundEffect();
+      this.isValid();
       this.eventEmitter.emit(this.textFieldModel);
     }
   }
   onIconClick() {
-    if (this.textFieldModel!['isDisabled']) {
+    if (!this.textFieldModel!['isDisabled']) {
+      this.soundEffect();
       this.iconEventEmitter.emit(this.textFieldModel);
+    }
+  }
+
+  isValid() {
+    const pattern = this.textFieldModel?.['inputContent'];
+    const value = this.textFieldModel?.['value'];
+    if (pattern && value) {
+      const regex = new RegExp(pattern);
+      if (regex.test(value)) {
+        this.titleText = '';
+      } else {
+        this.titleText = 'Invalid Input!!!';
+      }
+    }
+  }
+
+  soundEffect() {
+    const audio = document.getElementById('clickSound') as HTMLAudioElement;
+    if (audio) {
+      audio.currentTime = 0;
+      audio.play();
     }
   }
 }
@@ -58,14 +83,9 @@ export class TextField {
   public customIcon: string = '';
   //audio
   public isAudio: boolean = true;
-  public audioSrc: string = '';
+  public audioSrc: string = 'assets/login-ang-lib/audios/input-audio.mp3';
 
-  constructor(
-    tag: number,
-    label: string,
-    isRequired: boolean,
-    inputType: InputType
-  ) {
+  constructor(tag: number, label: string, isRequired: boolean, inputType: InputType) {
     this.tag = tag;
     this.label = label;
     this.isRequired = isRequired;

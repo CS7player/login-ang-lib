@@ -25,16 +25,23 @@ $diabled-bg: #f5f5f5;
       height: auto;
       border: none;
       outline: none;
+      &.valid{
+       color:$red-ink;
+      }
     }
     i {
       padding: 0.2rem 0.4rem;
-    }
-    :active{
-     border: 1px solid $blue-border;
     }
     :disabled{
      background-color: $diabled-bg;
      cursor: not-allowed;
     }
+    &.disabled{
+     background-color: $diabled-bg;
+     cursor: not-allowed;
+    }
+  }
+  :active{
+   border:1px solid $blue-border;
   }
 }

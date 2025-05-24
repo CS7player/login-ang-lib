@@ -1,6 +1,6 @@
 @if(textFieldModel){
 <div class="text-body">
-  <fieldset [class.disabled]="textFieldModel!['isDisabled']">
+  <fieldset [class.disabled]="textFieldModel!['isDisabled']" [title]="titleText">
     @if(textFieldModel!["label"].length > 0){
     <legend>
       {{ textFieldModel!["label"] }}
@@ -13,11 +13,14 @@
      [type]="textFieldModel!['inputType']"
      [placeholder]="textFieldModel!['placeHolder']"
      [disabled]="textFieldModel!['isDisabled']"
+     [class.valid]="titleText.length > 0"
      [(ngModel)]="textFieldModel!['value']"
      (keyup)="onEnter()">
     @if(textFieldModel!["isIcon"]){
-     <i [class]="textFieldModel!['iconClass']" (onClick)="onIconClick()"></i>
+     <i [class]="textFieldModel?.iconClass" (click)="onIconClick()"></i>
     }
   </fieldset>
 </div>
+<audio id="clickSound" [src]="textFieldModel?.audioSrc" preload="auto"></audio>
 }
+
