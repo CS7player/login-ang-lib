@@ -10,5 +10,5 @@
     }
   </button>
 </div>
-<audio id="clickSound" [src]="buttonModel?.audioSrc" preload="auto"></audio>
+<audio id="clickSound" [src]="buttonModel!['audioSrc']" preload="auto"></audio>
 }
